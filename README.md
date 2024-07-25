@@ -37,3 +37,35 @@ In this case, the consequence shown as below.
 |0  |0.153354  |0.294285  |0.411374  |0.495137  |0.538786  |0.538786  |0.495137  |0.411375  |0.294286  |0.153355         |0|
 |0 |0.0799143  |0.153354  |0.214371   |0.25802  |0.280766  |0.280766   |0.25802  |0.214371  |0.153355 |0.0799145         |0|
 |0       |  0         |0       |  0    |     0  |       0   |      0   |      0    |     0   |      0    |   0  |0         |0|
+
+
+
+
+### Set up
+
+#### CMake
+
+**On Windows**
+Go to the CMake download page. Download the Windows installer. Run the installer.
+**On Linux**
+sudo apt-get update
+sudo apt-get install cmake
+
+#### Eigen
+
+Install Eigen from https://eigen.tuxfamily.org as tar.gz or zip format, and extract it in the project directory.
+Add the pass to eigen directory in C/C++: Edit Configuration (JSON) such as 
+"includePath": [
+                "${workspaceFolder}/**",
+                "eigen-3.3.9"
+            ]
+
+
+### Build
+
+Create a build directory and navigate the terminal to the build directory
+cd build
+and run the following commands
+cmake ../src
+cmake --build
+
