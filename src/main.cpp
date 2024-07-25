@@ -13,41 +13,24 @@ Solver initialization()
     std::string input, c_type, method;
     int m, n;
 
-    std::cout << "User input (u) or configuration file (c)" << std::endl;
-    std::cin >> input;
-
-    if (input == "c")
+    std::ifstream config;
+    config.open("../config.txt", std::ios::in);
+    if (config.is_open())
     {
-        std::ifstream config;
-        config.open("../config.txt", std::ios::in);
-        if (config.is_open())
-        {
-            std::cout << "file is open" << std::endl;
-        }
-        else
-        {
-            std::cout << "error" << std::endl;
-        }
-        config >> c_type;
-        config >> m;
-        config >> n;
-        config >> method;
-        Coordinate c(c_type, m, n);
-        Solver s(c, method);
-        config.close();
-        return s;
-    }
-    else if (input == "u")
-    {
-        Coordinate c;
-        Solver s(c);
-        return s;
+        std::cout << "file is open" << std::endl;
     }
     else
     {
-        std::cout << "unrecognized name" << std::endl;
-        exit(EXIT_FAILURE);
+        std::cout << "error" << std::endl;
     }
+    config >> c_type;
+    config >> m;
+    config >> n;
+    config >> method;
+    Coordinate c(c_type, m, n);
+    Solver s(c, method);
+    config.close();
+    return s;
 }
 
 // ----- write the result to csv file -----
@@ -93,11 +76,5 @@ int main()
 
 
     // ----- write to a csv file -----
-    std::string print_csv;
-    std::cout << "Print the result to CSV file? (y/n)" << std::endl;
-    std::cin >> print_csv;
-    if (print_csv == "y")
-    {
-        write_to_csv(s.get_T());
-    }
+    write_to_csv(s.get_T());
 }
