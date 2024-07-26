@@ -80,7 +80,14 @@ PDE-SOLVER
     |-- eigen-3.3.9          
     |-- src       
     |-- build        
-    |-- sample         
+    |-- sample        
+
+
+#### Streamlit
+
+On the terminal
+
+`pip install streamlit seaborn matplotlib pandas`
 
 _____
 
