@@ -2,16 +2,19 @@ import streamlit as st
 import subprocess
 import os
 
-
+# Set title and description of this page.
 st.title("Solve PDE")
 st.write("Fill the configurations and click Run button to solve PDE.")
 
+# Set select box for the choice of solver, and number inputs for nodes in x and y directions.
 solver = st.selectbox("Solver", ("Gauss-Seidel method", "Jacobi method"))
-
 x = st.number_input("Assign a number of nodes in horizontal direction", value=10)
 y = st.number_input("Assign a number of nodes in vertical direction", value=10)
 
 new_config = "c"
+
+# Once "Run" button is clicked, overwrite the config.txt file based on the user's choice.
+# After that, run main.cpp
 if st.button("Run"):
     new_config = new_config + "\n" + str(x) + "\n" + str(y)
     if solver == "Gauss-Seidel method":
@@ -49,10 +52,10 @@ if st.button("Run"):
             print("Build successful.")
             print(build_result.stdout)
             
-            # Define the name of the executable (adjust if necessary)
-            executable = 'main'  # Replace with the actual executable name
+            # Define the name of the executable
+            executable = 'main'  
             if os.name == 'nt':
-                executable += '.exe'  # On Windows, add .exe extension
+                executable += '.exe'  
             
             # Run the compiled executable
             run_command = [os.path.join('.', executable)]
@@ -67,4 +70,5 @@ if st.button("Run"):
     else:
         print("CMake configuration failed.")
         print(cmake_result.stderr)
+    # Back to the main working directory
     os.chdir("../")

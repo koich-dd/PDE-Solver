@@ -7,7 +7,7 @@
 #include "Solver.h"
 
 
-
+// ----- Initialize parameters with the data from config.txt -----
 Solver initialization()
 {
     std::string input, c_type, method;
