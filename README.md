@@ -13,9 +13,7 @@ The boundaries are set to 0.
 
 - **Analytical Solution** : `T(x,y) = sin(pi * x) * sin(pi * y)`
 
-- **Simulation Concept**: It enables users to solve PDEs with different methods. 
-
-- **How to Execute the Code**: User can choose either Gauss-Seidel method or Jacobi method. Both methods returns the solution as a matrix. user can see the output as a heatmap.
+- **Application Concept**: It enables users to solve PDEs with different methods. User can choose either Gauss-Seidel method or Jacobi method. Both methods returns the solution as a matrix. user can see the output as a heatmap.
 
 - **Example**: 10 nodes are assigned in both x and y directions. The consequence shown as below.
       
@@ -67,7 +65,7 @@ sudo apt-get install cmake
 
 #### Eigen
 
-Install Eigen from https://eigen.tuxfamily.org as tar.gz or zip format, and extract it in the project directory.
+Download Eigen from https://eigen.tuxfamily.org as tar.gz or zip format, and extract it in the project directory.
 Add the pass to eigen directory in C/C++: Edit Configuration (JSON) such as 
 ```
 "includePath": [
