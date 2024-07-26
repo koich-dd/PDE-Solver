@@ -63,7 +63,8 @@ Add the pass to eigen directory in C/C++: Edit Configuration (JSON) such as
             ]
 ```
          
-The project directory should look like:
+The project directory should look like:     
+
 PDE-SOLVER         
     |          
     |-- eigen-3.3.9          
