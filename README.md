@@ -47,17 +47,21 @@ In a heatmap, it is visualized as follows.
 **On Windows**         
 Go to the CMake download page. Download the Windows installer. Run the installer.          
 **On Linux**      
-'sudo apt-get update'       
-'sudo apt-get install cmake'       
+```
+sudo apt-get update 
+sudo apt-get install cmake
+``` 
 
 #### Eigen
 
 Install Eigen from https://eigen.tuxfamily.org as tar.gz or zip format, and extract it in the project directory.
 Add the pass to eigen directory in C/C++: Edit Configuration (JSON) such as 
-'"includePath": [
+```
+"includePath": [
                 "${workspaceFolder}/**",
                 "eigen-3.3.9"
-            ]'
+            ]
+```
          
 The project directory should look like:
 PDE-SOLVER         
@@ -70,8 +74,8 @@ PDE-SOLVER
 
 ### How to use
 
-1. Use CMake tools to configure the project such as "CMake Tools" on Visual Studio.
-2. Run 'streamlit run src/Home.py' to launch app.
+1. Use CMake tools to configure the project such as *CMake Tools* on Visual Studio.
+2. Run `streamlit run src/Home.py` to launch app.
 3. On the *SolvePDE* page, set the configurations and run the solver.
 4. View the results on the *Visualization* page.
 
