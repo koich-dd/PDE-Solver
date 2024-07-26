@@ -39,6 +39,7 @@ In a heatmap, it is visualized as follows.
 
 ![Example result!](/sample/example.jpeg "Example")
 
+____
 
 ### Set up
 
@@ -65,13 +66,13 @@ Add the pass to eigen directory in C/C++: Edit Configuration (JSON) such as
          
 The project directory should look like:     
 
-PDE-SOLVER         
-    |          
+PDE-SOLVER          
     |-- eigen-3.3.9          
     |-- src       
     |-- build        
     |-- sample         
 
+_____
 
 ### How to use
 
