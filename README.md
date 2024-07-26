@@ -1,6 +1,6 @@
 # PDE SOLVER
 
-optional project in Advanced Programming
+Optional student project in Advanced Programming
 
 **2D steady state heat equation on C++**
 
@@ -13,16 +13,12 @@ The boundaries are set to 0.
 
 - **Analytical Solution** : `T(x,y) = sin(pi * x) * sin(pi * y)`
 
-- **Simulation Concept**: It allows different coordinates and enables users to compute with different methods. 
+- **Simulation Concept**: It enables users to solve PDEs with different methods. 
 
-- **How to Execute the Code**: It accepts both cartesian coordinate and polar coordinate. Users can choose either. For the cartesian coordinate, user must input the nodes number of x and y direction. In the same way, user must input the nodes number of radial and angular direction for polar coordinate. Then, user can choose either Gauss-Seidel method or Jacobi method. Both methods returns the solution as a matrix. user can output the results in csv file.
+- **How to Execute the Code**: User can choose either Gauss-Seidel method or Jacobi method. Both methods returns the solution as a matrix. user can see the output as a heatmap.
 
-- **Example**:In the example, when the code executed, using the configuration file(c) to do the simulation. And then take Cartesian(c) as the coordinate system and assign 10 nodes in both x and y directions. Last, choose Gauss-Seidel(g) to solver the configuration. In the end of the process, user could save the consequence as a csv. file to visualize the outcome.
-
-In this case, the consequence shown as below.
-
-
-
+- **Example**: 10 nodes are assigned in both x and y directions. The consequence shown as below.
+      
 |  |  |  |  |  |  |  |  |  |  |  |  |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 | 0 | 0 |0 |  0 | 0 | 0 |0 | 0 | 0 | 0| 0 |0|
@@ -38,34 +34,44 @@ In this case, the consequence shown as below.
 |0 |0.0799143  |0.153354  |0.214371   |0.25802  |0.280766  |0.280766   |0.25802  |0.214371  |0.153355 |0.0799145         |0|
 |0       |  0         |0       |  0    |     0  |       0   |      0   |      0    |     0   |      0    |   0  |0         |0|
 
+      
+In a heatmap, it is visualized as follows.
 
+![Example result!](/sample/example.jpeg "Example")
 
 
 ### Set up
 
 #### CMake
 
-**On Windows**
-Go to the CMake download page. Download the Windows installer. Run the installer.
-**On Linux**
-sudo apt-get update
-sudo apt-get install cmake
+**On Windows**         
+Go to the CMake download page. Download the Windows installer. Run the installer.          
+**On Linux**      
+'sudo apt-get update'       
+'sudo apt-get install cmake'       
 
 #### Eigen
 
 Install Eigen from https://eigen.tuxfamily.org as tar.gz or zip format, and extract it in the project directory.
 Add the pass to eigen directory in C/C++: Edit Configuration (JSON) such as 
-"includePath": [
+'"includePath": [
                 "${workspaceFolder}/**",
                 "eigen-3.3.9"
-            ]
+            ]'
+         
+The project directory should look like:
+PDE-SOLVER         
+    |          
+    |-- eigen-3.3.9          
+    |-- src       
+    |-- build        
+    |-- sample         
 
 
-### Build
+### How to use
 
-Create a build directory and navigate the terminal to the build directory
-cd build
-and run the following commands
-cmake ../src
-cmake --build
+1. Use CMake tools to configure the project such as "CMake Tools" on Visual Studio.
+2. Run 'streamlit run src/Home.py' to launch app.
+3. On the *SolvePDE* page, set the configurations and run the solver.
+4. View the results on the *Visualization* page.
 

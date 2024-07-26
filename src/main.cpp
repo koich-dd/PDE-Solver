@@ -47,7 +47,7 @@ void write_to_csv(const Eigen::MatrixXd& temp)
     csv_file.setf(std::ios::fixed);
 
     // csv headers
-    csv_file << "Solution_of_2d_heat_equation" << std::endl;
+    // csv_file << "Solution_of_2d_heat_equation" << std::endl;
     
     csv_file << temp;
 }
