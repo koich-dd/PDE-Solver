@@ -41,6 +41,16 @@ In a heatmap, it is visualized as follows.
 
 ____
 
+### Requirements
+- Eigen >= 3.3
+- CMake >= 3.30
+- Streamlit >= 1.3
+- pandas >= 1.3
+- seaborn >= 0.12
+- matplotlib >= 3.7
+
+____
+
 ### Set up
 
 #### CMake
