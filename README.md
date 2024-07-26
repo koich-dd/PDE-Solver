@@ -42,6 +42,8 @@ In a heatmap, it is visualized as follows.
 ____
 
 ### Requirements
+- gcc >= 9.0
+- python >= 3.7
 - Eigen >= 3.3
 - CMake >= 3.30
 - Streamlit >= 1.3
