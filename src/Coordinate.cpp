@@ -7,36 +7,8 @@
 
 Coordinate::Coordinate()
 {
-    // User input
-    std::cout << "choose coordinate : Cartesian(c) or Polar(p)" << std::endl;
-    std::cin >> _type;
-
-    // User decide the number of nodes in x and y directions
-    if(_type == "c")
-    {
-        std::cout << "number of nodes in x direction" << std::endl;
-        std::cin >> _m;
-        std::cout << "number of nodes in y direction" << std::endl;
-        std::cin >> _n;
-        // Call functions that create the matrix and right hand side vector of the linear system
-        cartesianMat();
-        cartesianVec();
-    }
-    else if(_type == "p")
-    {
-        std::cout << "number of nodes in radius direction" << std::endl;
-        std::cin >> _m;
-        std::cout << "number of nodes in angular direction" << std::endl;
-        std::cin >> _n;
-        // Call functions that create the matrix and right hand side vector of the linear system
-        polarMat();
-        polarVec();
-    }
-    else
-    {
-        std::cout << "unrecognized name" << std::endl;
-        exit(EXIT_FAILURE);
-    }
+    // Warning
+    std::cout << "Choose a right configuration" << std::endl;
 }
 
 

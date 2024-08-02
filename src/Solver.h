@@ -8,7 +8,7 @@
 
 class Solver
 {
-    private:
+    protected:
         /*
         _rtol : tolerance for the error
         _maxiter : maximum number of iteration
@@ -17,18 +17,20 @@ class Solver
         double _rtol = pow(10,-4);
         int _maxiter = pow(10,4);
         std::string _solver;
+        Coordinate* _coord;
         Eigen::MatrixXd _T;
     
     public:
         /*
-        GaussSeide : Call Gauss-Seidel method. it returns the solution as a matrix
-        Jacobi : call Jacobi method. it returns the solution as a matrix
+        solve : Call a method to solve PDE.
+        get_T : returns T matrix.
         */
         Solver(){}
-        Solver(Coordinate& c);
-        Solver(Coordinate& c, std::string method);
-        Eigen::MatrixXd GaussSeidel(int Nx, int Ny, Eigen::VectorXd b);
-        Eigen::MatrixXd Jacobi(int Nx, int Ny, Eigen::MatrixXd A, Eigen::VectorXd b);
+        virtual Eigen::MatrixXd solve(int Nx, int Ny, Eigen::MatrixXd A, Eigen::VectorXd b) = 0;
+        void run()
+        {
+            _T = solve(_coord->get_m(), _coord->get_n(), _coord->get_mat(), _coord->get_vec());
+        }
         Eigen::MatrixXd get_T()
         {
             return _T;

@@ -3,34 +3,64 @@
 #include <Eigen/Dense>
 #include <string>
 #include <chrono>
+#include <vector>
 #include "Coordinate.h"
-#include "Solver.h"
+#include "Jacobi.h"
+#include "GaussSeidel.h"
 
+
+// ----- Solver factory -----
+Solver* solver_factory(std::string name, Coordinate* coord) {
+    if (name == "j") {
+        return new Jacobi(coord);
+    } else if (name == "g") {
+        return new GaussSeidel(coord);
+    } else {
+        return nullptr;
+    }
+}
 
 // ----- Initialize parameters with the data from config.txt -----
-Solver initialization()
+Solver* initialization()
 {
-    std::string input, c_type, method;
+    std::string input, coord_type, method;
     int m, n;
 
-    std::ifstream config;
-    config.open("../config.txt", std::ios::in);
-    if (config.is_open())
-    {
-        std::cout << "file is open" << std::endl;
+    // Open the file
+    std::ifstream file("../config.csv");
+    if (!file) {
+        std::cerr << "Unable to open file\n";
     }
-    else
-    {
-        std::cout << "error" << std::endl;
+
+    // Read the single row
+    std::string line;
+    if (std::getline(file, line)) {
+        // Create a stringstream from the line
+        std::stringstream ss(line);
+
+        // Vector to hold the parsed fields
+        std::vector<std::string> fields;
+        std::string field;
+
+        // Parse the line using comma as delimiter
+        while (std::getline(ss, field, ',')) {
+            fields.push_back(field);
+        }
+        coord_type = fields[0];
+        m = std::stoi(fields[1]);
+        n = std::stoi(fields[2]);
+        method = fields[3][0];
+    } else {
+        std::cerr << "No data found in the file!" << std::endl;
     }
-    config >> c_type;
-    config >> m;
-    config >> n;
-    config >> method;
-    Coordinate c(c_type, m, n);
-    Solver s(c, method);
-    config.close();
-    return s;
+
+    Coordinate* coord = new Coordinate(coord_type, m, n);
+    Solver* solver = solver_factory(method, coord);
+
+    // Close the file
+    file.close();
+
+    return solver;
 }
 
 // ----- write the result to csv file -----
@@ -62,19 +92,17 @@ int main()
     // Start measurement
     start = std::chrono::system_clock::now();
 
-    Solver s;
-    s = initialization();
+    Solver* solver = initialization();
+    solver->run();
 
     // End measurement
     end = std::chrono::system_clock::now();
     auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-    // Output the result on the console
-    // std::cout << s.get_T() << std::endl;
-    
+    // Output elapsed time
     std::cout << "\n elapsed time: " << elapsed_time.count() << "ms\n" << std::endl;
 
 
     // ----- write to a csv file -----
-    write_to_csv(s.get_T());
+    write_to_csv(solver->get_T());
 }

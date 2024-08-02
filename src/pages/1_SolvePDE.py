@@ -1,6 +1,8 @@
 import streamlit as st
 import subprocess
 import os
+import json
+import csv
 
 # Set title and description of this page.
 st.title("Solve PDE")
@@ -19,10 +21,18 @@ if st.button("Run"):
     new_config = new_config + "\n" + str(x) + "\n" + str(y)
     if solver == "Gauss-Seidel method":
         new_config = new_config + "\ng"
+        solver_key = "g"
     if solver == "Jacobi method":
         new_config = new_config + "\nj"
+        solver_key = "j"
     with open("config.txt", "w") as file:
         file.write(new_config)
+
+    data = [["c", x, y, solver_key]]
+
+    with open("config.csv", "w") as file:
+        writer = csv.writer(file)
+        writer.writerows(data)
 
     # Define the build directory
     build_dir = 'build'
