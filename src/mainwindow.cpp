@@ -29,6 +29,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::on_runButton_clicked() {
+
     // Read the input values
     int xNodes = xLineEdit->text().toInt();
     int yNodes = yLineEdit->text().toInt();
@@ -48,8 +49,6 @@ void MainWindow::on_runButton_clicked() {
 }
 
 void MainWindow::runSolver(int x, int y, const QString &solverType) {
-    // Your existing C++ logic here. For example:
-    // mySolver.run(x, y, solverType.toStdString());
     run(x, y, solverType.toStdString());
 
     // Here we just print the values for demonstration

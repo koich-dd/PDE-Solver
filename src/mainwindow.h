@@ -20,7 +20,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
+public slots:
     void on_runButton_clicked();
     void runSolver(int x, int y, const QString &solverType);
 

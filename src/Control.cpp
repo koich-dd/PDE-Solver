@@ -3,9 +3,9 @@
 
 // ----- Solver factory -----
 Solver* solver_factory(std::string name, Coordinate* coord) {
-    if (name == "j") {
+    if (name == "Jacobi") {
         return new Jacobi(coord);
-    } else if (name == "g") {
+    } else if (name == "GaussSeidel") {
         return new GaussSeidel(coord);
     } else {
         return nullptr;
@@ -20,6 +20,8 @@ Solver* initialization(int m, int n, std::string method)
 
     Coordinate* coord = new Coordinate(coord_type, m, n);
     Solver* solver = solver_factory(method, coord);
+    std::cout << "clicked" << std::endl;
+    std::cout << method << std::endl;
 
     return solver;
 }
