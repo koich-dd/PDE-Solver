@@ -5,6 +5,7 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QPushButton>
+#include "heatmapwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -22,10 +23,12 @@ public:
 
 public slots:
     void on_runButton_clicked();
+    void on_tabChanged(int index);
     void runSolver(int x, int y, const QString &solverType);
 
 private:
     Ui::MainWindow *ui;
+    HeatmapWidget *heatmapWidget;
 
     // Declare pointers to the UI elements
     QLineEdit *xLineEdit;

@@ -24,8 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(runButton, &QPushButton::clicked, this, &MainWindow::on_runButton_clicked);
 
     // Add the HeatmapWidget to the second tab
-    HeatmapWidget *heatmapWidget = new HeatmapWidget(this);
+    heatmapWidget = new HeatmapWidget(this);
     ui->tabWidget->addTab(heatmapWidget, "View");
+
+    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MainWindow::on_tabChanged);
 }
 
 MainWindow::~MainWindow()
@@ -58,4 +60,12 @@ void MainWindow::runSolver(int x, int y, const QString &solverType) {
 
     // Here we just print the values for demonstration
     // qDebug() << "Running solver with x =" << x << ", y =" << y << ", solver =" << solverType;
+}
+
+
+void MainWindow::on_tabChanged(int index) {
+    // Check if the "View" tab is selected
+    if (ui->tabWidget->tabText(index) == "View") {
+        heatmapWidget->reloadData();  // Reload the heatmap data
+    }
 }

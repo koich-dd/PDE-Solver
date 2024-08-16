@@ -8,6 +8,7 @@ class HeatmapWidget : public QWidget {
     Q_OBJECT
 public:
     explicit HeatmapWidget(QWidget *parent = nullptr);
+    void reloadData();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -15,7 +16,7 @@ protected:
 private:
     std::vector<std::vector<double>> gridData;
     void loadGridData(const std::string &filename);
-    QColor interpolateColor(const QColor &startColor, const QColor &endColor, double value);
+    QColor getColorForValue(double value);
 };
 
 #endif // HEATMAPWIDGET_H
