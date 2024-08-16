@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Add the HeatmapWidget to the second tab
     HeatmapWidget *heatmapWidget = new HeatmapWidget(this);
-    ui->tabWidget->addTab(heatmapWidget, "Heatmap");
+    ui->tabWidget->addTab(heatmapWidget, "View");
 }
 
 MainWindow::~MainWindow()

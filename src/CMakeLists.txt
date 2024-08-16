@@ -27,6 +27,8 @@ set(PROJECT_SOURCES
         Jacobi.h
         Coordinate.cpp
         Coordinate.h
+        heatmapwidget.cpp
+        heatmapwidget.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

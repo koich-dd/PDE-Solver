@@ -8,7 +8,7 @@
 HeatmapWidget::HeatmapWidget(QWidget *parent)
     : QWidget(parent) {
     // Load the grid data from the CSV file
-    loadGridData("../build/grid_data.csv");
+    loadGridData("../build/2d_heat_equation.csv");
 }
 
 void HeatmapWidget::paintEvent(QPaintEvent *event) {
