@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 #include <QMessageBox>
 #include "Control.h"
+#include "heatmapwidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -21,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Connect the run button to the slot
     connect(runButton, &QPushButton::clicked, this, &MainWindow::on_runButton_clicked);
+
+    // Add the HeatmapWidget to the second tab
+    HeatmapWidget *heatmapWidget = new HeatmapWidget(this);
+    ui->tabWidget->addTab(heatmapWidget, "Heatmap");
 }
 
 MainWindow::~MainWindow()
